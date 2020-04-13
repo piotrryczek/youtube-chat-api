@@ -1,12 +1,12 @@
 {
-  "name": "youtube-chat",
+  "name": "youtube-chat-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "webpack webpack.js",
-    "start": "babel-node src/server.js",
-    "start-dev": "nodemon --exec babel-node src/server.js"
+    "start": "NODE_PATH=./src nodemon babel-node src/server.js",
+    "start-dev": "NODE_PATH=./src nodemon --exec babel-node src/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,15 +18,18 @@
     "@koa/cors": "^3.0.0",
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
+    "chromedriver": "^81.0.0",
     "dotenv": "^8.2.0",
     "dotenv-webpack": "^1.7.0",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.3.0",
+    "koa-combine-routers": "^4.0.2",
     "koa-compress": "^3.0.0",
     "koa-helmet": "^5.2.0",
     "koa-mount": "^4.0.0",
     "koa-router": "^8.0.8",
     "koa-static": "^5.0.0",
+    "koa-views": "^6.2.1",
     "lodash": "^4.17.15",
     "md5": "^2.2.1",
     "moment": "^2.24.0",
@@ -34,8 +37,10 @@
     "mongoose-auto-increment": "^5.0.1",
     "nodemon": "^2.0.3",
     "object.fromentries": "^2.0.2",
+    "pug": "^2.0.4",
     "puppeteer": "^2.1.1",
     "qs": "^6.9.3",
+    "socket.io": "^2.3.0",
     "uuid": "^7.0.3"
   },
   "devDependencies": {

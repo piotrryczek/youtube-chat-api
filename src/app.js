@@ -1,15 +1,24 @@
 import Koa from 'koa';
+import bodyParser from 'koa-bodyparser';
+import views from 'koa-views';
+import cors from '@koa/cors';
 
-import ChatScrapper from './services/chatScrapper';
+import router from 'routes';
+import db from 'config/db';
 
+db.on('error', (error) => {
+  console.log(`Mongoose connection error: ${error}`);
+});
 
 const app = new Koa();
+app.use(bodyParser());
+app.use(views(`${__dirname}/views`, { extension: 'pug' }));
+app.use(cors());
 
-const chatScrapper = new ChatScrapper('https://www.youtube.com/live_chat?is_popout=1&v=SLV1B5Lzy48');
+app.on('error', (error) => {
+  console.log(error);
+});
 
-setTimeout(async () => {
-  chatScrapper.start();
-}, 0);
-
+app.use(router());
 
 export default app;
